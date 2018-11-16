@@ -1,15 +1,15 @@
-import requests
-url = 'https://worldcup.sfg.io/matches'
-r = requests.get(url)
-all_games = r.json()
+# import requests
+# url = 'https://worldcup.sfg.io/matches'
+# r = requests.get(url)
+# all_games = r.json()
+
 from datetime import datetime as dt
-from sqlalchemy import * #Column, Integer, String, ForeignKey, DateTime, create_engine
-# from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, relationship, backref
+from flask import Flask
+from sqlalchemy import *
+# from sqlalchemy.orm import sessionmaker, relationship, backref
 from flask_sqlalchemy import SQLAlchemy
 from ourpackage import *
 
-# Write your classes below
 class Game(db.Model):
     __tablename__ = 'games'
     id = db.Column(db.Integer, primary_key=True)
@@ -21,9 +21,9 @@ class Game(db.Model):
         secondary='statistics',
         back_populates='games'
     )
-    def to_dict(self):
-        game = {'id': self.id, 'venue': self.venue, 'winner': self.winner} #'statistics': [tweet.to_dict() for tweet in self.tweets]
-        return game
+    # def to_dict(self):
+    #     game = {'id': self.id, 'venue': self.venue, 'winner': self.winner} #'statistics': [tweet.to_dict() for tweet in self.tweets]
+    #     return game
 
 class Team(db.Model):
     __tablename__ = 'teams'
@@ -35,9 +35,9 @@ class Team(db.Model):
         secondary='statistics',
         back_populates='teams'
     )
-    def to_dict(self):
-        team = {'id': self.id, 'country': self.country,}
-        return team
+    # def to_dict(self):
+    #     team = {'id': self.id, 'country': self.country,}
+    #     return team
 
 class Statistics(db.Model):
     __tablename__ = 'statistics'
@@ -53,9 +53,9 @@ class Statistics(db.Model):
     distance_covered=db.Column(db.Integer)
     on_target=db.Column(db.Integer)
     pass_accuracy=db.Column(db.Integer)
-    def to_dict(self):
-        tweet = {'id': self.id, 'game_id': self.game_id, 'team_id': self.team_id,'name': self.name,'goals': self.goals}
-        return tweet
+    # def to_dict(self):
+    #     tweet = {'id': self.id, 'game_id': self.game_id, 'team_id': self.team_id,'name': self.name,'goals': self.goals}
+    #     return tweet
 
 
 db.create_all()

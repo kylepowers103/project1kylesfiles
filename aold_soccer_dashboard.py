@@ -1,11 +1,41 @@
+# can run this to check db
+
 # # importing the os (operating system module)
 # import os
 # dir_path = os.path.dirname(os.path.realpath(__file__))
+# #
+# # # using the os module to get the current working directory
+# # # in order get the proper path for the excel file
+# # cwd = os.getcwd()
+# #import dash core components as dcc
+# import dash_core_components as dcc
+# #import dash html components as html
+# import dash_html_components as html
+# # import Input, Output from dash.dependencies for callback functions
+# from dash.dependencies import Input, Output
+# from ourpackage.models import app,db, Team,Game,Statistics
+
 #
-# # using the os module to get the current working directory
-# # in order get the proper path for the excel file
-# cwd = os.getcwd()
+# def return_country_and_its_total_goals():
+#     games = session.query(Team.country,func.sum(Statistics.goals)).join(Statistics).group_by(Team.country).all()
 #
+#
+#     states = [{'label': state.name, 'value': state.name} for state in State.query.all()]
+#     return dcc.Dropdown(
+#         id='state_selector',
+#         options=states,
+#         value="New Jersey"
+#
+# def return_country_and_its_total_goals():
+#     return session.query(Team.country, func.sum(Statistics.goals)).join(Statistics).group_by(Team.country).all()
+#
+
+
+
+
+
+
+
 # # importing pandas module to read the excel file and extract the data
 # import pandas
 # # using pandas to read the excel file and giving the names of the columns

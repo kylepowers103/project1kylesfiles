@@ -13,8 +13,11 @@ server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(server)
 
 #create new Dash app and use existing Flask app as our Dash app's server
-app = dash.Dash(__name__, server=server, url_base_pathname='/dashboard/')
+app = dash.Dash(__name__, server=server, url_base_pathname='/dashboard/') # external_stylesheets
 #import our routes after our database has been configured
-from ourpackage.models import *
-from ourpackage.routes import *
+from query import *
 from ourpackage.dashboard import *
+
+#
+# from ourpackage.models import *
+# from ourpackage.routes import *
